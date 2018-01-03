@@ -9,7 +9,7 @@ class Customer_active extends CI_Controller {
 
     function index() {
         $data['active'] = $this->Model_customers->show_active();
-        $this->template->load('template', 'customers/active/view_active', $data);
+        $this->load->view('view_active', $data);
     }
 
     function add() {
@@ -128,7 +128,7 @@ class Customer_active extends CI_Controller {
         ];
         $this->form_validation->set_rules($konfig);
         if ($this->form_validation->run() == FALSE) {
-            $this->template->load('template', 'customers/active/add_active');
+            $this->load->view('form_add');
         } else {
             if (isset($_POST['submit'])) {
                 $this->Model_customers->save();
